@@ -1,38 +1,57 @@
 <script setup lang="ts">
-import { isDark, preferredDark } from '~/common/composables'
+import { useCssVar } from '@vueuse/core'
+import type { GlobalThemeOverrides } from 'naive-ui'
+import { NDialogProvider, NMessageProvider, NNotificationProvider } from 'naive-ui'
 
-useHead({
-  title: 'Vitesse Modular NaiveUI',
-  meta: [
-    { name: 'description', content: 'Opinionated Vite Starter Template with modular architecture design' },
-    {
-      name: 'theme-color',
-      content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
-    },
-  ],
-  link: [
-    {
-      rel: 'icon',
-      type: 'image/svg+xml',
-      href: computed(() => preferredDark.value ? '/favicon-dark.svg' : '/favicon.svg'),
-    },
-  ],
-})
-
-const refMsgTargetEl = ref<any>()
+const themeOverrides: GlobalThemeOverrides = {
+  common: {
+    primaryColor: useCssVar('--primary-color').value,
+    primaryColorHover: useCssVar('--primary-color-hover').value,
+    primaryColorPressed: useCssVar('--primary-color-pressed').value,
+    fontFamily: '"Inter Variable", sans-serif',
+  },
+  DataTable: {
+    fontSizeSmall: '12px',
+    thFontWeight: '500',
+  },
+  Menu: {},
+  Spin: {
+    color: useCssVar('--primary-color').value,
+  },
+  Drawer: {
+    titleFontSize: '1rem',
+  },
+  Message: {
+    // maxWidth: ui.isDesktop ? undefined : mobileMaxWidthMessage,
+    // fontSize: "16px"
+  },
+  Skeleton: {
+    // color: "rgba(1, 123, 137, 0.2)",
+    // colorEnd: "rgba(1, 123, 137, 0.99)"
+  },
+  Carousel: {
+    dotColor: 'rgba(112, 112, 112, 0.5)',
+    dotColorFocus: 'rgba(112, 112, 112, 0.5)',
+    dotColorActive: 'rgb(112, 112, 112)',
+  },
+}
 </script>
 
 <template>
-  <n-config-provider>
-    <n-loading-bar-provider>
-      <n-message-provider :to="refMsgTargetEl">
-        <n-notification-provider>
-          <n-dialog-provider>
-            <router-view />
-            <div ref="refMsgTargetEl" class="app-msg-target" />
-          </n-dialog-provider>
-        </n-notification-provider>
-      </n-message-provider>
-    </n-loading-bar-provider>
-  </n-config-provider>
+  <NConfigProvider :theme-overrides="themeOverrides">
+    <NGlobalStyle />
+    <NLoadingBarProvider>
+      <NNotificationProvider>
+        <NMessageProvider>
+          <NDialogProvider>
+            <RouterView />
+          </NDialogProvider>
+        </NMessageProvider>
+      </NNotificationProvider>
+    </NLoadingBarProvider>
+  </NConfigProvider>
 </template>
+
+<style lang="scss">
+  @import './common/styles/main.css';
+</style>

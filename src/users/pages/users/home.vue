@@ -1,83 +1,29 @@
 <script setup lang="ts">
-import { useUserStore } from '~/users/stores/user'
-const router = useRouter()
-const userStore = useUserStore()
 
-const name = ref(userStore.savedName)
-const email = ref(userStore.savedEmail)
-
-const choosePlans = () => {
-  if (name.value && email.value) {
-    userStore.setNewName(name.value)
-    userStore.setNewEmail(email.value)
-
-    router.push(`/orders/${encodeURIComponent(name.value)}`)
-  }
-}
 </script>
 
 <template>
-  <div class="max-w-md mx-auto">
-    <v-title-lg>
-      {{ 'intro.fill-up-form' }}
-    </v-title-lg>
-
-    <v-description
-      class="my-5"
-    >
-      {{ 'no-data-saved' }}
-    </v-description>
-
-    <div class="py-4" />
-
-    <div>
-      <label class="block mb-1 text-sm text-gray-500" for="inputName">
-        {{ 'intro.whats-your-name' }}
-      </label>
-      <v-input
-        id="inputName"
-        v-model="name"
-        typeof="text"
-        placeholder="John Doe"
-        aria-label="(intro.whats-your-name)"
-      />
-    </div>
-
-    <div class="py-2" />
-
-    <div>
-      <label class="block mb-1 text-sm text-gray-500" for="inputEmail">
-        {{ 'intro.whats-your-email' }}
-      </label>
-      <v-input
-        id="inputEmail"
-        v-model="email"
-        typeof="email"
-        placeholder="john@example.com"
-        aria-label="(intro.whats-your-email)"
-      />
-    </div>
-
-    <div class="mt-5">
-      <VButton
-        class="px-4 py-2 text-base"
-        :disabled="!name || !email"
-        data-test="btn-choose-plan"
-        @click.self="choosePlans"
-      >
-        {{ 'button.choose-plans' }}
-      </VButton>
-    </div>
-
-    <div class="mb-8">
-      <VButtonText
-        class="px-4 py-2 text-gray-500 font-semibold"
-        @click.self="router.back()"
-      >
-        {{ 'button.back' }}
-      </VButtonText>
-    </div>
+  <n-button type="tertiary" class="text-xl">
+    Tertiary
+  </n-button>
+  <div class="bg-black font-bold">
+    tex
   </div>
+  <n-button type="primary">
+    Primary
+  </n-button>
+  <n-button type="info">
+    Info
+  </n-button>
+  <n-button type="success">
+    Success
+  </n-button>
+  <n-button type="warning">
+    Warning
+  </n-button>
+  <n-button type="error">
+    Error
+  </n-button>
 </template>
 
 <route lang="yaml">

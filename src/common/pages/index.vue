@@ -8,15 +8,8 @@ const go = () => {
 
 <template>
   <div>
-    <div class="py-4" />
-
-    <div>
-      <button
-        class="m-3 text-sm btn"
-        @click="go"
-      >
-        click here
-      </button>
-    </div>
+    <n-button type="warning" @click="go">
+      click
+    </n-button>
   </div>
 </template>

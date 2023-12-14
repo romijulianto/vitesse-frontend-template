@@ -7,30 +7,24 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    CarbonCampsite: typeof import('~icons/carbon/campsite')['default']
-    CarbonDicomOverlay: typeof import('~icons/carbon/dicom-overlay')['default']
-    CarbonLanguage: typeof import('~icons/carbon/language')['default']
-    CarbonLogoGithub: typeof import('~icons/carbon/logo-github')['default']
     CarbonMoon: typeof import('~icons/carbon/moon')['default']
     CarbonSun: typeof import('~icons/carbon/sun')['default']
     CarbonWarning: typeof import('~icons/carbon/warning')['default']
-    Counter: typeof import('./counter/components/Counter.vue')['default']
     Footer: typeof import('./common/components/Footer.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDatePicker: typeof import('naive-ui')['NDatePicker']
     NDialogProvider: typeof import('naive-ui')['NDialogProvider']
+    NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
     NLoadingBarProvider: typeof import('naive-ui')['NLoadingBarProvider']
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
-    PlanItem: typeof import('./orders/components/PlanItem.vue')['default']
     README: typeof import('./common/components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     VButton: typeof import('./common/components/VButton.vue')['default']
     VButtonText: typeof import('./common/components/VButtonText.vue')['default']
     VDescription: typeof import('./common/components/VDescription.vue')['default']
-    VInput: typeof import('./common/components/VInput.vue')['default']
     VTitleLg: typeof import('./common/components/VTitleLg.vue')['default']
   }
 }

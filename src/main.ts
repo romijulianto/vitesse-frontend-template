@@ -5,9 +5,13 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import App from './App.vue'
 import type { UserModule } from './types'
 
-import './common/styles/main.css'
-
 const routes = setupLayouts(generatedRoutes)
+
+// -- tailwind
+const meta = document.createElement('meta')
+meta.name = 'naive-ui-style'
+document.head.appendChild(meta)
+// --
 
 // https://github.com/antfu/vite-ssg
 export const createApp = ViteSSG(

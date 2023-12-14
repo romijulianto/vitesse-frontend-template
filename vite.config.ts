@@ -30,7 +30,7 @@ export default defineConfig({
     Pages({
       extensions: ['vue', 'md'],
       pagesDir: [
-        { dir: 'src/**/pages', baseRoute: '' },
+        { dir: 'src/**/pages', baseRoute: 'pupuk' },
       ],
     }),
 
@@ -44,9 +44,7 @@ export default defineConfig({
       imports: [
         'vue',
         'vue-router',
-        'vue-i18n',
         'vue/macros',
-        '@vueuse/head',
         '@vueuse/core',
       ],
       dts: 'src/auto-imports.d.ts',
@@ -58,7 +56,7 @@ export default defineConfig({
       dirs: ['src/**/components'],
 
       // allow auto load markdown components under `./src/components/`
-      extensions: ['vue', 'md'],
+      extensions: ['vue'],
 
       // search for subdirectories
       deep: true,
@@ -66,7 +64,7 @@ export default defineConfig({
       dts: 'src/components.d.ts',
 
       // allow auto import and register components used in markdown
-      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+      include: [/\.vue$/, /\.vue\?vue/],
 
       // custom resolvers
       resolvers: [
