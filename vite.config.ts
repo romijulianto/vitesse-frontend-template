@@ -9,20 +9,14 @@ import IconsResolver from 'unplugin-icons/resolver'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import Markdown from 'vite-plugin-vue-markdown'
 import { VitePWA } from 'vite-plugin-pwa'
 import Inspect from 'vite-plugin-inspect'
 import Inspector from 'vite-plugin-vue-inspector'
-import Prism from 'markdown-it-prism'
-import LinkAttributes from 'markdown-it-link-attributes'
-
-const markdownWrapperClasses = 'prose lg:prose-xl mx-auto text-left dark:prose-invert'
 
 export default defineConfig({
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
-      'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
     },
   },
 
@@ -89,24 +83,6 @@ export default defineConfig({
     // https://github.com/antfu/unplugin-icons
     Icons({
       autoInstall: true,
-    }),
-
-    // https://github.com/antfu/vite-plugin-vue-markdown
-    // Don't need this? Try vitesse-lite: https://github.com/antfu/vitesse-lite
-    Markdown({
-      wrapperClasses: markdownWrapperClasses,
-      headEnabled: true,
-      markdownItSetup(md) {
-        // https://prismjs.com/
-        md.use(Prism)
-        md.use(LinkAttributes, {
-          matcher: (link: string) => /^https?:\/\//.test(link),
-          attrs: {
-            target: '_blank',
-            rel: 'noopener',
-          },
-        })
-      },
     }),
 
     // https://github.com/antfu/vite-plugin-pwa
