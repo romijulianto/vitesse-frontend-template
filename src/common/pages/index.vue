@@ -2,14 +2,14 @@
 // Routing
 const router = useRouter()
 const go = () => {
-  router.push('/users/home')
+  router.push('/home/start')
 }
+
+setTimeout(go, 2000)
 </script>
 
 <template>
-  <div>
-    <n-button type="warning" @click="go">
-      click
-    </n-button>
+  <div class="flex items-center justify-center mt-[50%]">
+    <img src="/images/favicon.png" style="width: 15rem; height: 15rem;">
   </div>
 </template>

@@ -1,8 +1,8 @@
 {
-  "prettier.enable": false,
+  "prettier.enable": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
   },
   "files.associations": {
     "*.css": "postcss"

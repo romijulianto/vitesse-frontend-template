@@ -30,7 +30,7 @@ export default defineConfig({
     Pages({
       extensions: ['vue', 'md'],
       pagesDir: [
-        { dir: 'src/**/pages', baseRoute: 'pupuk' },
+        { dir: 'src/**/pages', baseRoute: '/' },
       ],
     }),
 
@@ -86,24 +86,24 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-pwa
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
+      includeAssets: ['favicon.png'],
       manifest: {
         name: 'Vitesse',
         short_name: 'Vitesse',
         theme_color: '#ffffff',
         icons: [
           {
-            src: '/pwa-192x192.png',
+            src: '/favicon.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/pwa-512x512.png',
+            src: '/favicon.png',
             sizes: '512x512',
             type: 'image/png',
           },
           {
-            src: '/pwa-512x512.png',
+            src: '/favicon.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable',
