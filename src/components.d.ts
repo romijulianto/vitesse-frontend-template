@@ -8,11 +8,9 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     DrawPolygon: typeof import('./main/components/DrawPolygon.vue')['default']
-    FillAttribute: typeof import('./main/components/FillAttribute.vue')['default']
     Footer: typeof import('./common/components/Footer.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NButtonGroup: typeof import('naive-ui')['NButtonGroup']
-    NCad: typeof import('naive-ui')['NCad']
     NCard: typeof import('naive-ui')['NCard']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']

@@ -58,7 +58,7 @@ watch(current, (newCurrent) => {
               description="Lengkapi attribute tabel pendukung data"
             >
               <div v-if="current === 3">
-                <FillAttribute />
+                <DrawPolygon />
               </div>
             </n-step>
             <n-step
