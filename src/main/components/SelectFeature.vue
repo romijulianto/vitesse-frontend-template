@@ -12,6 +12,7 @@ async function getFeatures() {
       Authorization: `Bearer ${import.meta.env.VITE_TOKEN_BACKEND}`,
     },
   }).json<JSendResponse<Feature[]>>()
+
   featureOptions.value = response.data.map((service) => {
     return {
       label: service.title,
@@ -19,11 +20,6 @@ async function getFeatures() {
     }
   })
 }
-
-// Watch selectedFeature for changes
-watch(selectedFeature, (SelectedFeature) => {
-  console.log(SelectedFeature)
-})
 
 onMounted(async () => {
   await getFeatures()

@@ -5,13 +5,25 @@ import FeatureLayer from '@arcgis/core/layers/FeatureLayer'
 import Editor from '@arcgis/core/widgets/Editor'
 import Expand from '@arcgis/core/widgets/Expand'
 import Fullscreen from '@arcgis/core/widgets/Fullscreen'
+import ky from 'ky'
+import type { Feature } from '../types/features'
+import type { JSendResponse } from '~/common/types/base'
 
 const mapContainer = ref<HTMLDivElement>()
 const mapDiv = ref<HTMLDivElement>()
 
+// TODO: value dari selectedFeatire
+const idSelected = ref<number>(2)
+
+const response = await ky.get(`${import.meta.env.VITE_BACKEND_ARCGIS}/services/${idSelected.value}`, {
+  headers: {
+    Authorization: `Bearer ${import.meta.env.VITE_TOKEN_BACKEND}`,
+  },
+}).json<JSendResponse<Feature[]>>()
+
 async function getFeature() {
   const myPointsFeatureLayer = new FeatureLayer({
-    url: 'https://gis.pupuk-indonesia.com/arcgis/rest/services/Hosted/Petak_TABANAN/FeatureServer',
+    url: `${response.data[0].url}`,
   })
 
   const mapEsri = new Map({
@@ -65,7 +77,7 @@ onMounted(async () => {
 
 <style scoped>
 #mapdiv {
-  height: 350px;
+  height: 700px;
 }
 
 .esri-editor__prompt__header {

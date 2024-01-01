@@ -21,6 +21,10 @@ const prev = () => {
     current.value = 4
   else current.value--
 }
+
+// Watch selectedFeature for changes
+watch(current, (newCurrent) => {
+})
 </script>
 
 <template>
